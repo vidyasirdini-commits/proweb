@@ -1,0 +1,324 @@
+/* ==========================================================================
+   Modern Dark-Mode High-Performance Engineering Portfolio Styles
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --accent-primary: #06b6d4;     /* Cyan 500 */
+  --accent-secondary: #6366f1;   /* Indigo 500 */
+  --accent-glow: rgba(6, 182, 212, 0.25);
+  --accent-border: rgba(6, 182, 212, 0.4);
+  --accent-badge-bg: rgba(6, 182, 212, 0.1);
+  --terminal-bg: #090d16;
+  --bg-surface: #0f172a;
+}
+
+[data-theme="indigo"] {
+  --accent-primary: #6366f1;
+  --accent-secondary: #a855f7;
+  --accent-glow: rgba(99, 102, 241, 0.25);
+  --accent-border: rgba(99, 102, 241, 0.4);
+  --accent-badge-bg: rgba(99, 102, 241, 0.1);
+}
+
+[data-theme="emerald"] {
+  --accent-primary: #10b981;
+  --accent-secondary: #06b6d4;
+  --accent-glow: rgba(16, 185, 129, 0.25);
+  --accent-border: rgba(16, 185, 129, 0.4);
+  --accent-badge-bg: rgba(16, 185, 129, 0.1);
+}
+
+[data-theme="violet"] {
+  --accent-primary: #a855f7;
+  --accent-secondary: #ec4899;
+  --accent-glow: rgba(168, 85, 247, 0.25);
+  --accent-border: rgba(168, 85, 247, 0.4);
+  --accent-badge-bg: rgba(168, 85, 247, 0.1);
+}
+
+/* Base resets & typography */
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
+}
+
+body {
+  background-color: #030712; /* zinc-950 / slate-950 */
+  color: #f1f5f9;
+  overflow-x: hidden;
+  selection-background-color: var(--accent-primary);
+  selection-color: #030712;
+}
+
+::selection {
+  background: var(--accent-primary);
+  color: #030712;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #030712;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+  border: 2px solid #030712;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Code & Monospace font */
+.font-mono-code {
+  font-family: 'Geist Mono', 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Background Grids & Ambient Glows */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glowing text and dynamic highlights */
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 30%, var(--accent-primary) 70%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-accent {
+  color: var(--accent-primary);
+}
+
+.bg-accent {
+  background-color: var(--accent-primary);
+}
+
+.border-accent {
+  border-color: var(--accent-border);
+}
+
+.glow-box {
+  box-shadow: 0 0 30px -5px var(--accent-glow);
+}
+
+.glow-box-sm {
+  box-shadow: 0 0 15px -3px var(--accent-glow);
+}
+
+/* Interactive Card Effects */
+.interactive-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-border);
+  box-shadow: 0 12px 30px -10px var(--accent-glow);
+}
+
+/* Terminal Console Styling */
+.terminal-window {
+  background-color: var(--terminal-bg);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 25px -5px var(--accent-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal-header {
+  background: linear-gradient(to bottom, #111827, #0d131f);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.terminal-body {
+  font-family: 'Geist Mono', 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  min-height: 280px;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.terminal-prompt-sym {
+  color: var(--accent-primary);
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background-color: var(--accent-primary);
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: cursorBlink 1s infinite steps(1);
+}
+
+@keyframes cursorBlink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Subtle CRT scanline overlay */
+.scanline-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+/* Badges & Chips */
+.tech-chip {
+  transition: all 0.2s ease;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.tech-chip:hover {
+  border-color: var(--accent-primary);
+  background: var(--accent-badge-bg);
+  color: var(--accent-primary);
+}
+
+.active-chip {
+  background: var(--accent-primary) !important;
+  color: #030712 !important;
+  font-weight: 600;
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 15px -3px var(--accent-glow);
+}
+
+/* Live pulsating indicator */
+.pulse-beacon {
+  position: relative;
+  display: inline-flex;
+}
+
+.pulse-beacon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #22c55e;
+  animation: pulseRipple 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes pulseRipple {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.6);
+    opacity: 0;
+  }
+}
+
+/* Glassmorphism navigation */
+.glass-nav {
+  background: rgba(3, 7, 18, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Toast container & animations */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast-message {
+  pointer-events: auto;
+  background: #0f172a;
+  border: 1px solid var(--accent-border);
+  color: #f8fafc;
+  padding: 12px 18px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px -3px var(--accent-glow);
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  max-width: 380px;
+}
+
+.toast-message.toast-out {
+  animation: toastOut 0.25s forwards cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes toastIn {
+  from {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes toastOut {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(15px) scale(0.95);
+    opacity: 0;
+  }
+}
+
+/* Modal backdrop & animation */
+.modal-backdrop {
+  background-color: rgba(3, 7, 18, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+/* Keyframes for subtle float */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+}
